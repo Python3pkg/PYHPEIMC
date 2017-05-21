@@ -132,7 +132,7 @@ class TestAdd_devs_custom_views(TestCase):
         view_details = get_custom_view_details('L1 View', auth.creds, auth.url)
         view_dev_list = []
         for dev in view_details:
-            print (dev['ip'])
+            print((dev['ip']))
             view_dev_list.append(dev['ip'])
         self.assertEqual(get_dev_details(CW5_Switch, auth.creds, auth.url)['ip'], view_dev_list[0])
 

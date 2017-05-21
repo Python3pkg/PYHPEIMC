@@ -207,7 +207,7 @@ def add_devs_custom_views(custom_view_name, dev_list, auth, url):
     r = requests.put(f_url, data = payload, auth=auth, headers=HEADERS)  # creates the URL using the payload variable as the contents
     try:
         if r.status_code == 204:
-            print ('View ' + custom_view_name +' : Devices Successfully Added')
+            print(('View ' + custom_view_name +' : Devices Successfully Added'))
             return r.status_code
     except requests.exceptions.RequestException as e:
             return "Error:\n" + str(e) + ' get_custom_views: An Error has occured'

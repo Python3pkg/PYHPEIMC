@@ -176,7 +176,7 @@ def set_inteface_down(devid, ifindex, auth, url):
     try:
         r = requests.put(f_url, auth=auth,
                          headers=HEADERS)  # creates the URL using the payload variable as the contents
-        print(r.status_code)
+        print((r.status_code))
         if r.status_code == 204:
             return r.status_code
     except requests.exceptions.RequestException as e:

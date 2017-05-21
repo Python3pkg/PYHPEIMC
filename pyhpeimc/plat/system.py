@@ -226,7 +226,7 @@ def get_telnet_template(auth, url, template_name=None):
                 for telnet_template in telnet_templates['telnetParamTemplate']:
                     if telnet_template['name'] == template_name:
                         template = [telnet_template]
-                print (type(template))
+                print((type(template)))
                 if template == None:
                     return 404
                 else:

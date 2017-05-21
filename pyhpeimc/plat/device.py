@@ -667,7 +667,7 @@ def set_interface_down(ifindex, auth, url, devid=None, devip=None):
     f_url = url + set_int_down_url
     try:
         response = requests.put(f_url, auth=auth, headers=HEADERS)
-        print(response.status_code)
+        print((response.status_code))
         if response.status_code == 204:
             return response.status_code
     except requests.exceptions.RequestException as error:

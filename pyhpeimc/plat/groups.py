@@ -184,10 +184,10 @@ def create_custom_views(auth, url, name=None, upperview=None):
     response = requests.post(f_url, data=payload, auth=auth, headers=HEADERS)
     try:
         if response.status_code == 201:
-            print('View ' + name + ' created successfully')
+            print(('View ' + name + ' created successfully'))
             return response.status_code
         elif response.status_code == 409:
-            print("View " + name + " already exists")
+            print(("View " + name + " already exists"))
             return response.status_code
         else:
             return response.status_code
@@ -221,7 +221,7 @@ def add_devs_custom_views(custom_view_name, dev_list, auth, url):
     """
     view_id = get_custom_views(auth, url, name=custom_view_name)
     if view_id is None:
-        print("View " + custom_view_name + " doesn't exist")
+        print(("View " + custom_view_name + " doesn't exist"))
         return view_id
     view_id = get_custom_views(auth, url, name=custom_view_name)[0]['symbolId']
     add_devs_custom_views_url = '/imcrs/plat/res/view/custom/' + str(view_id)
@@ -235,7 +235,7 @@ def add_devs_custom_views(custom_view_name, dev_list, auth, url):
     response = requests.put(f_url, data=payload, auth=auth, headers=HEADERS)
     try:
         if response.status_code == 204:
-            print('View ' + custom_view_name + ' : Devices Successfully Added')
+            print(('View ' + custom_view_name + ' : Devices Successfully Added'))
             return response.status_code
     except requests.exceptions.RequestException as error:
         return "Error:\n" + str(error) + ' get_custom_views: An Error has occured'
@@ -279,7 +279,7 @@ def delete_custom_view(auth, url, name):
     """
     view_id = get_custom_views(auth, url, name)
     if view_id is None:
-        print("View " + name + " doesn't exists")
+        print(("View " + name + " doesn't exists"))
         return view_id
     view_id = get_custom_views(auth, url, name)[0]['symbolId']
     delete_custom_view_url = '/imcrs/plat/res/view/custom/' + str(view_id)
@@ -287,7 +287,7 @@ def delete_custom_view(auth, url, name):
     response = requests.delete(f_url, auth=auth, headers=HEADERS)
     try:
         if response.status_code == 204:
-            print('View ' + name + ' deleted successfully')
+            print(('View ' + name + ' deleted successfully'))
             return response.status_code
         else:
             return response.status_code

@@ -120,8 +120,8 @@ def set_operator_password(operator, password, auth, url,headers=HEADERS):
 
        """
     if operator == None:
-        operator = input(
-            '''\n What is the username you wish to change the password?''')
+        operator = eval(input(
+            '''\n What is the username you wish to change the password?'''))
     oper_id = ''
     plat_oper_list = get_plat_operator(auth, url)
     for i in plat_oper_list:
@@ -133,8 +133,8 @@ def set_operator_password(operator, password, auth, url,headers=HEADERS):
     change_pw_url = "/imcrs/plat/operator/"
     f_url = url + change_pw_url + oper_id
     if password is None:
-        password = input(
-        '''\n ============ Please input the operators new password:\n ============  ''')
+        password = eval(input(
+        '''\n ============ Please input the operators new password:\n ============  '''))
     payload = json.dumps({'password': password , 'authType': authType})
     r = requests.put(f_url, data=payload, auth=auth, headers=headers)
     try:
@@ -182,7 +182,7 @@ def get_plat_operator(auth, url,headers=HEADERS):
             return oper_list
         return plat_oper_list
     except requests.exceptions.RequestException as e:
-        print ("Error:\n" + str(e) + ' get_plat_operator: An Error has occured')
+        print(("Error:\n" + str(e) + ' get_plat_operator: An Error has occured'))
         return "Error:\n" + str(e) + ' get_plat_operator: An Error has occured'
 
 def delete_plat_operator(operator,auth, url, headers=HEADERS):
